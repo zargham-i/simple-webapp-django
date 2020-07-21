@@ -1,0 +1,104 @@
+{% load static %}<!DOCTYPE html>
+<html>
+    <head>
+        <title>Learning Community Serena</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	</head>
+    <body>
+        <div id="site">
+        <!--This is the header of the website that contains the heading, background image, and the navigation bar-->
+        <div class="header">
+            <nav style="float: right;">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#home">Home</a></li>
+                </ul>
+            </nav>
+            <h1 id="title">Learning Community Serena</h1>
+        </div>
+
+        <button id="toggle" type="button">Dark Mode</button>
+        <button id="light" type="button">Light Mode</button>
+        <script src="{% static 'js/main.js' %}"></script>
+
+        <div id="site_content">
+            <!--Sidebar content goes here-->
+            <div id="sidebar">
+                <h3>Latest News</h3>
+                <h4>Upcoming Intern Panel</h4>
+                <h5>May 27th, 2020</h5>
+                <br>
+                <p>On May 28th, CDIR will be combined for a Panel discussion. LCS will be joined by 3-4 current Software Interns for a discussion on their virtual internship experience.</p>
+
+                <br>
+
+                <h4>Upcoming Mock Interviews</h4>
+                <h5>May 27th, 2020</h5>
+                <br>
+                <p>Class 28 participants will be interviewing with Year-Up corporate partners and friends on Friday, May 29th, 2020. Participants will be able to put their business communication skills to the test. The dress code will be Business Professional and the interviews will be roughly 20 minutes long.</p>
+            </div>
+            <!--Main content goes here-->
+            <div id="content">
+                <img src="{% static 'img/year-up.gif' %}" alt="Year Up Logo" width="550" height="195">
+                
+                <br><br>
+                <h2>Welcome to LCS Landing Page</h2>
+                <br><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et netus et malesuada fames ac turpis egestas integer. Cum sociis natoque penatibus et magnis dis parturient montes nascetur. Non arcu risus quis varius quam quisque. Diam ut venenatis tellus in metus. Arcu non odio euismod lacinia at. Sed ullamcorper morbi tincidunt ornare massa. Euismod elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Bibendum at varius vel pharetra vel turpis nunc. Et malesuada fames ac turpis egestas sed. Quis lectus nulla at volutpat diam ut venenatis tellus. Posuere morbi leo urna molestie at. Nunc sed blandit libero volutpat sed cras ornare arcu dui. Neque egestas congue quisque egestas diam in arcu. Nulla facilisi cras fermentum odio. At tellus at urna condimentum mattis pellentesque id nibh.</p>
+
+		<br><br><br><br><br><br><br><br>
+		<div class="container">
+			<ol class="breadcrumb my-4">
+				<li class="breadcrumb-item active" style="color:black;" id="comments">Comments</li>
+			</ol>
+			<form method="post">
+				{% csrf_token %}
+				
+				<div class="form-group">
+				  <label for="id_name">Name</label>
+				  <input type="text" class="form-control" id="id_name" name="name">
+				</div>
+				
+				<div class="form-group">
+				  <label for="id_comment">Comments</label>
+				  <textarea class="form-control" id="id_comment" name="comment" rows="5"></textarea>
+				</div>
+				
+				<button type="submit" class="btn btn-success">Post</button>
+			</form>
+			<br>
+			<table class="table span4">
+			  <thead class="thead-inverse">
+				<tr>
+				  <th>Name</th>
+				  <th>Comments</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				{% for comment in comments %}
+				  <tr>
+					<td>
+					  {{ comment.username }}
+					  <br>
+					  <small>
+						{{ comment.created_at }}
+					  </small>
+					</td>
+					<td class="align-middle">
+					  {{ comment.body }}
+					</td>
+				  </tr>
+				{% endfor %}
+			  </tbody>
+			</table>
+		</div>
+        
+	</div>
+	            </div>
+				<footer><p style="text-align: center;">Zargham Ibrahim | © 2020</p></footer>
+        </div>
+    </body>
+</html>
